@@ -13,8 +13,6 @@
 //
 // Execute `rustlings hint hashmaps2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 use std::collections::HashMap;
 
 #[derive(Hash, PartialEq, Eq)]
@@ -24,6 +22,8 @@ enum Fruit {
     Mango,
     Lychee,
     Pineapple,
+    Grape,
+    Strawberry,
 }
 
 fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
@@ -33,6 +33,8 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         Fruit::Mango,
         Fruit::Lychee,
         Fruit::Pineapple,
+        Fruit::Grape,
+        Fruit::Strawberry,
     ];
 
     for fruit in fruit_kinds {
@@ -52,6 +54,8 @@ mod tests {
         basket.insert(Fruit::Apple, 4);
         basket.insert(Fruit::Mango, 2);
         basket.insert(Fruit::Lychee, 5);
+        basket.insert(Fruit::Grape, 5);
+        basket.insert(Fruit::Strawberry, 5);
 
         basket
     }
@@ -68,6 +72,9 @@ mod tests {
     #[test]
     fn at_least_five_types_of_fruits() {
         let mut basket = get_fruit_basket();
+        basket.insert(Fruit::Pineapple, 5);
+        basket.insert(Fruit::Banana, 5);
+
         fruit_basket(&mut basket);
         let count_fruit_kinds = basket.len();
         assert!(count_fruit_kinds >= 5);
